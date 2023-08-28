@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>Resume</title>
+    <style>
+        img {
+            border-radius: 50%;
+        }
+        
+        @import url(https://fonts.googleapis.com/css?family=Roboto:100);
+        body {
+            background: #f8f6f6;
+            font-family: Roboto, Arial;
+        }
+        
+        .hero {
+            height: 80em;
+            background: url(http://wallpoper.com/images/00/34/14/30/mountains-clouds_00341430.jpg) no-repeat center;
+            background-size: cover;
+            position: relative;
+        }
+        
+        .tint {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background: rgb(0, 77, 100);
+        }
+        
+        .claim {
+            color: #dbdbdb;
+            font-size: 2.5em;
+            padding: 5% 20em 0 2em;
+            position: relative;
+        }
+        
+        .claim2 {
+            color: #fff7f7;
+            font-size: 3em;
+            padding: 10% 7em 0 15em;
+            position: relative;
+        }
+        
+        .a {
+            position: absolute;
+            left: 900px;
+            top: 20;
+            right: 10px;
+            bottom: 90;
+        }
+        
+        .proficiency {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-size: 24px;
+            color: #333;
+        }
+        
+        .skills-container {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            max-width: 800px;
+        }
+        
+        .skill-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .skill {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        
+        .skill:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 8px 12px rgba(5, 5, 5, 0.2);
+        }
+        
+        .skill h2 {
+            margin: 0;
+            margin-bottom: 10px;
+        }
+        
+        .bar-container {
+            width: 100%;
+            height: 20px;
+            background-color: rgb(177, 169, 169);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .bar {
+            height: 100%;
+            background-color: #0453a7;
+            border-radius: 10px;
+            width: 0;
+            transition: width 1s ease-in-out;
+        }
+        
+        .background-image {
+            background-image: url('https://i0.wp.com/www.gigbuzz.pk/wp-content/uploads/2022/04/IT-skills-development-traingin-platfroms.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .TEXT {
+            color: #070707;
+            font-size: 3em;
+            padding: 10% 7em 0 15em;
+            position: relative;
+        }
+        
+        .containerproject {
+            text-align: center;
+            padding: 50px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .project {
+            width: calc(50% - 20px);
+            margin: 10px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .project:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .project-image {
+            margin-bottom: 10px;
+        }
+        
+        .project-image img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        
+        .project-info {
+            flex: 1;
+        }
+        
+        .project-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .project-description {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+        
+        .project-link {
+            text-decoration: none;
+            background-color: #2196F3;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        .project-link:hover {
+            background-color: #1976D2;
+            transform: translateY(-2px);
+        }
+        
+        .scroll-to-top-button {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border: none;
+            background-color: #000000;
+            color: rgb(255, 255, 255);
+            font-size: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .scroll-to-top-button.active {
+            display: block;
+        }
+        
+        .scroll-to-bottom-button {
+            display: none;
+            position: fixed;
+            bottom: 50px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: #007bff;
+            color: white;
+            font-size: 24px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .show-button .scroll-to-bottom-button {
+            display: block;
+        }
+        
+        .skip {
+            padding-top: 12%;
+        }
+        
+        body {
+            display: grid;
+            grid-template-rows: 1fr 10rem auto;
+            grid-template-areas: "main" "." "footer";
+            overflow-x: hidden;
+            background: #F5F7FA;
+            min-height: 100vh;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        .footer {
+            z-index: 1;
+            --footer-background: #ED5565;
+            display: grid;
+            position: relative;
+            grid-area: footer;
+            min-height: 12rem;
+        }
+        
+        .bubbles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1rem;
+            background: var(--footer-background);
+            filter: url("#blob");
+        }
+        
+        .bubble {
+            position: absolute;
+            left: var(--position, 50%);
+            background: var(--footer-background);
+            border-radius: 100%;
+            animation: bubble-size var(--time, 4s) ease-in infinite var(--delay, 0s), bubble-move var(--time, 4s) ease-in infinite var(--delay, 0s);
+            transform: translate(-50%, 100%);
+        }
+        
+        .content {
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            grid-gap: 4rem;
+            padding: 2rem;
+            background: var(--footer-background);
+        }
+        
+        .content a,
+        .content p {
+            color: #F5F7FA;
+            text-decoration: none;
+        }
+        
+        .content b {
+            color: white;
+        }
+        
+        .content p {
+            margin: 0;
+            font-size: 0.75rem;
+        }
+        
+        .content>div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .content>div>div {
+            margin: 0.25rem 0;
+        }
+        
+        .image {
+            align-self: center;
+            width: 4rem;
+            height: 4rem;
+            margin: 0.25rem 0;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        @keyframes bubble-size {
+            0%,
+            75% {
+                width: var(--size, 4rem);
+                height: var(--size, 4rem);
+            }
+            100% {
+                width: 0rem;
+                height: 0rem;
+            }
+        }
+        
+        @keyframes bubble-move {
+            0% {
+                bottom: -4rem;
+            }
+            100% {
+                bottom: var(--distance, 10rem);
+            }
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+    <div class="main">
+        <header class="text-gray-600 body-font">
+            <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+                <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+
+                    <img src="s.jpg" alt="s" style="width:100px">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                    </svg>
+                    <span class="font-mono text-4xl tracking-tight"> Saad Hussain</span>
+                </a>
+                <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+                    <button onclick="scrollToskills()" class="rounded-full hover:bg-cyan-400 active:bg-black-500 focus:outline-none focus:ring focus:ring-grey-700 inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"> 
+                    Skills
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                    </svg>
+                </button>
+                    <button onclick="scrollToproject()" class="rounded-full hover:bg-cyan-400 active:bg-black-500 focus:outline-none focus:ring focus:ring-grey-700 inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"> 
+                Projects
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                </svg>
+                </button>
+
+                    <button onclick="scrollToContact()" class="rounded-full hover:bg-cyan-400 active:bg-black-500 focus:outline-none focus:ring focus:ring-grey-700 inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"> 
+                Contact Me
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                </svg>
+            </button>
+
+                </nav>
+            </div>
+        </header>
+
+
+
+        <section class="text-gray-600 body-font ">
+            <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center ">
+                <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center ">
+                    <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900 ">HI, my name is Saad Hussain
+                    </h1>
+                    <p class="mb-8 leading-relaxed "> Passionate about crafting digital experiences through code and design. With a diverse skill set encompassing HTML, CSS, JavaScript, Python, C, and C++, I thrive on turning creative ideas into functional realities. With half a year
+                        of hands-on freelancing experience in UI/UX design and Android application development, I'm dedicated to pushing boundaries and creating user-centered solutions. Let's connect and collaborate to bring innovative concepts to life!.</p>
+                    <div class="flex justify-center ">
+                        <button onclick="scrollToContact()" class="bg-cyan-500 shadow-lg shadow-cyan-500/50  hoverbg-cyan-500 active:bg-black-500 focus:outline-none focus:ring focus:ring-grey-700 inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg ">Contact me</button>
+                        <button id="downloadButton" class=" bg-cyan-500 shadow-lg shadow-cyan-500/50  hover:bg-cyan-900 active:bg-cyan-900  focus:outline-none focus:ring focus:bg-gray-100 ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg ">See my Resume</button>
+                    </div>
+                </div>
+                <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 ">
+                    <img class="object-cover object-center rounded " alt="hero " src="saad.jpeg ">
+                </div>
+            </div>
+        </section>
+
+        <script>
+            const downloadButton = document.getElementById('downloadButton');
+
+            downloadButton.addEventListener('click', () => {
+                const pdfUrl = 'file:///D:/Saadhussain.pdf';
+                const a = document.createElement('a');
+                a.href = pdfUrl;
+                a.download = 'your-file-name.pdf';
+                a.target = '_blank';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            });
+        </script>
+
+
+
+        <button id="scrollToBottomBtn" class="scroll-to-bottom-button">↓</button>
+        <script>
+            const scrollToBottomBtn = document.getElementById('scrollToBottomBtn');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY < window.innerHeight) {
+                    scrollToBottomBtn.classList.add('show-button');
+                } else {
+                    scrollToBottomBtn.classList.remove('show-button');
+                }
+            });
+
+            scrollToBottomBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: document.body.scrollHeight,
+                    behavior: 'smooth'
+                });
+            });
+        </script>
+
+
+
+
+
+
+        <div class="hero ">
+            <div class="tint "></div>
+            <p class="claim2 ">WHAT I DO</p>
+            <div class="a">
+                <img class="object-cover object-center rounded" alt="hero " src="https://images.unsplash.com/photo-1614741118887-7a4ee193a5fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80">
+            </div>
+
+            <p class="claim ">I am a versatile web developer with a strong foundation in machine learning, artificial intelligence, and data analytics. My passion for data-driven insights has led me to aspire to become a well-rounded data scientist. I'm dedicated to expanding
+                my expertise in mobile application development and honing my skills in UI/UX design using a variety of tools. With a unique blend of technical skills and a deep understanding of data I aim to bridge the gap between cutting-edge technology
+                and user-centric design to create impactful solutions in the ever-evolving digital landscape </p>
+        </div>
+
+
+
+
+
+        <button id="scrollToTopBtn" class="scroll-to-top-button">↑</button>
+
+        <script>
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+            // Show/hide button based on scroll position
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    scrollToTopBtn.classList.add('active');
+                } else {
+                    scrollToTopBtn.classList.remove('active');
+                }
+            });
+
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        </script>
+
+
+
+        <section id="skills" class="text-gray-600 body-font">
+
+
+            <div class="background-image">
+                <div class="skills-container">
+                    <div class="skill-column">
+                        <div class="skill">
+                            <h2>HTML</h2>
+                            <div class="bar-container">
+                                <div class="bar" style="width: 90%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill">
+                            <h2>CSS</h2>
+                            <div class="bar-container">
+                                <div class="bar" style="width: 80%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill">
+                            <h2>C</h2>
+                            <div class="bar-container">
+                                <div class="bar" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="skill-column">
+                        <div class="skill">
+                            <h2>JavaScript</h2>
+                            <div class="bar-container">
+                                <div class="bar" style="width: 70%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill">
+                            <h2>Python</h2>
+                            <div class="bar-container">
+                                <div class="bar" style="width: 60%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill">
+                            <h2>c++</h2>
+                            <div class="bar-container">
+                                <div class="bar" style="width: 60%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="skill-column">
+                        <div class="skill">
+                            <h2>UI/UX Design</h2>
+                            <div class="bar-container">
+                                <div class="bar" style="width: 75%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill">
+                            <h2>Machine Learning</h2>
+                            <div class="bar-container">
+                                <div class="bar" style="width: 75%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill">
+                            <h2>Artificial Inteligence</h2>
+                            <div class="bar-container">
+                                <div class="bar" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script>
+            function isElementInViewport(element) {
+                var rect = element.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            }
+
+            function fillSkillBarsOnScroll() {
+                const skills = document.querySelectorAll(".bar");
+                skills.forEach(skill => {
+                    if (isElementInViewport(skill)) {
+                        skill.style.width = skill.style.width || skill.dataset.level;
+                    }
+                });
+            }
+
+            window.addEventListener("scroll", fillSkillBarsOnScroll);
+            window.addEventListener("resize", fillSkillBarsOnScroll);
+
+
+            fillSkillBarsOnScroll();
+        </script>
+
+        <section id="project" class="text-gray-600 body-font">
+            <div class="containerproject">
+                <div class="project">
+                    <div class="project-image">
+                        <img src="https://miro.medium.com/v2/resize:fit:1400/1*IoS0CbCnYrj8n-fNJiOshQ.png" alt="Project 1">
+                    </div>
+                    <div class="project-info">
+                        <div class="project-title">maze</div>
+                        <div class="project-description">A description of your first open source project.</div>
+                        <a class="project-link" href="https://github.com/sSaadhussain02/maze">View on GitHub</a>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <div class="project-image">
+                        <img src="https://i.ytimg.com/vi/1gQ6uG5Ujiw/maxresdefault.jpg" alt="Project 2">
+                    </div>
+                    <div class="project-info">
+                        <div class="project-title">sentiment-analysis</div>
+                        <div class="project-description">A description of your second open source project.</div>
+                        <a class="project-link" href="https://github.com/sSaadhussain02/sentiment-analysis">View on GitHub</a>
+                    </div>
+                </div>
+
+
+                <div class="containerproject">
+                    <div class="project">
+                        <div class="project-image">
+                            <img src="https://miro.medium.com/v2/resize:fit:1200/1*rw8IUza1dbffBhiA4i0GNQ.png" alt="Project 1">
+                        </div>
+                        <div class="project-info">
+                            <div class="project-title">K-means</div>
+                            <div class="project-description">A description of your first open source project.</div>
+                            <a class="project-link" href="https://github.com/sSaadhussain02/kmeans">View on GitHub</a>
+                        </div>
+                    </div>
+
+                    <div class="project">
+                        <div class="project-image">
+                            <img src="https://www.researchgate.net/publication/348753775/figure/fig4/AS:984684653723653@1611778524545/A-deep-neural-network-DNN-with-input-output-and-hidden-layers-shown-in-blue-orange.png" alt="Project 2">
+                        </div>
+                        <div class="skip"></div>
+                        <div class="project-info">
+                            <div class="project-title">neural_network</div>
+                            <div class="project-description">A description of your second open source project.</div>
+                            <a class="project-link" href="https://github.com/sSaadhussain02/neural_network">View on GitHub</a>
+                        </div>
+                    </div>
+
+                    <div class="containerproject">
+                        <div class="project">
+                            <div class="project-image">
+                                <img src="https://miro.medium.com/v2/resize:fit:1400/1*Cw5ZSYDkIFpmhBwr-hN84A.png" alt="Project 1">
+                            </div>
+                            <div class="project-info">
+                                <div class="project-title">linear-regression</div>
+                                <div class="project-description">A description of your first open source project.</div>
+                                <a class="project-link" href="https://github.com/sSaadhussain02/linear-regression">View on GitHub</a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="text-gray-600 body-font">
+
+        </section>
+
+        <script>
+            function scrollToContact() {
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                    contactSection.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            }
+
+            function scrollToproject() {
+                const projectSection = document.getElementById('project');
+                if (projectSection) {
+                    projectSection.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            }
+
+            function scrollToskills() {
+                const skillsSection = document.getElementById('skills');
+                if (skillsSection) {
+                    skillsSection.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        </script>
+
+        <section class="text-gray-600 body-font relative">
+
+            <div class="container px-5 py-24 mx-auto">
+                <div class="flex flex-col text-center w-full mb-12">
+                    <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Contact Me</h1>
+                    <p class="lg:w-2/3 mx-auto leading-relaxed text-base">You can contact me at</p>
+                    <a class="text-indigo-500">saadhusssain02@email.com</a>
+                    <p class="lg:w-2/3 mx-auto leading-relaxed text-base">or leave a message for me</p>
+                </div>
+                <div class="lg:w-1/2 md:w-2/3 mx-auto">
+                    <div class="flex flex-wrap -m-2">
+                        <div class="p-2 w-1/2">
+                            <div class="relative">
+                                <label for="name" class="leading-7 text-sm text-gray-600">Name</label>
+                                <input type="text" id="name" name="name" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                            </div>
+                        </div>
+                        <div class="p-2 w-1/2">
+                            <div class="relative">
+                                <label for="email" class="leading-7 text-sm text-gray-600">Email</label>
+                                <input type="email" id="email" name="email" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                            </div>
+                        </div>
+                        <div class="p-2 w-full">
+                            <div class="relative">
+                                <label for="message" class="leading-7 text-sm text-gray-600">Message</label>
+                                <textarea id="message" name="message" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                            </div>
+                        </div>
+                        <div class="p-2 w-full">
+                            <button class="flex mx-auto text-black bg-gray-300 border-0 py-2 px-8 focus:outline-none hover:bg-gray-500 rounded text-lg">Send</button>
+                        </div>
+                        <section class="text-gray-600 body-font">
+                            <div class="container px-5 py-24 mx-auto">
+                                <div class="xl:w-1/2 lg:w-3/4 w-full mx-auto text-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="inline-block w-8 h-8 text-gray-400 mb-8" viewBox="0 0 975.036 975.036">
+                              <path d="M925.036 57.197h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.399 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l36 76c11.6 24.399 40.3 35.1 65.1 24.399 66.2-28.6 122.101-64.8 167.7-108.8 55.601-53.7 93.7-114.3 114.3-181.9 20.601-67.6 30.9-159.8 30.9-276.8v-239c0-27.599-22.401-50-50-50zM106.036 913.497c65.4-28.5 121-64.699 166.9-108.6 56.1-53.7 94.4-114.1 115-181.2 20.6-67.1 30.899-159.6 30.899-277.5v-239c0-27.6-22.399-50-50-50h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.4 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l35.9 75.8c11.601 24.399 40.501 35.2 65.301 24.399z"></path>
+                            </svg>
+                                    <p class="leading-relaxed text-lg">Confidence and Hard-work is the best medicine to kill the disease called failure. It will make you a successful person.” – Abdul Kalam.</p>
+                                    <span class="inline-block h-1 w-10 rounded bg-indigo-500 mt-8 mb-6"></span>
+                                </div>
+                            </div>
+                        </section>
+
+                    </div>
+                </div>
+
+
+        </section>
+
+
+
+
+        </div>
+        <div class="footer">
+            <div class="bubbles">
+                <div class="bubble" style="--size:2.213983626874411rem; --distance:6.7738067219754345rem; --position:45.38281697828913%; --time:2.538584592815757s; --delay:-2.755539708715004s;"></div>
+                <div class="bubble" style="--size:4.48811041465479rem; --distance:7.095584261396867rem; --position:10.699998020800347%; --time:3.938946152777518s; --delay:-2.1845094666088185s;"></div>
+                <div class="bubble" style="--size:3.5179045471908346rem; --distance:7.9874262987477165rem; --position:33.33240873383134%; --time:2.873169252416788s; --delay:-3.476249823361633s;"></div>
+                <div class="bubble" style="--size:3.725366945129374rem; --distance:7.763067547812866rem; --position:27.393521891560077%; --time:3.2431723220114663s; --delay:-3.3799239144502615s;"></div>
+                <div class="bubble" style="--size:2.9522734050626207rem; --distance:8.683923795051513rem; --position:55.191551644670014%; --time:3.0250133619549753s; --delay:-2.657458866950726s;"></div>
+                <div class="bubble" style="--size:3.7501142752993006rem; --distance:7.516627440623707rem; --position:78.28524466769099%; --time:3.616512162764474s; --delay:-2.6206009987139156s;"></div>
+                <div class="bubble" style="--size:2.339629449373934rem; --distance:8.484427343728875rem; --position:94.05455309195922%; --time:3.5635418162133132s; --delay:-3.9579324314593896s;"></div>
+                <div class="bubble" style="--size:2.1557656438648634rem; --distance:7.412021475344807rem; --position:50.35764227606889%; --time:2.485449288654342s; --delay:-3.751883595060571s;"></div>
+                <div class="bubble" style="--size:5.941361967718933rem; --distance:6.989214962913948rem; --position:19.546645588436657%; --time:2.5078950593507727s; --delay:-3.5614740252370893s;"></div>
+                <div class="bubble" style="--size:2.3353050121310597rem; --distance:8.593807437772622rem; --position:-1.9826582035023632%; --time:3.521347615629704s; --delay:-2.649147650841974s;"></div>
+                <div class="bubble" style="--size:4.351801885636778rem; --distance:9.499415923627737rem; --position:39.77691939933111%; --time:2.3558651453915718s; --delay:-2.6729507628873748s;"></div>
+                <div class="bubble" style="--size:4.790697949394918rem; --distance:7.956375884916126rem; --position:68.71897495691256%; --time:3.1592579509882057s; --delay:-2.2486040891403976s;"></div>
+                <div class="bubble" style="--size:4.109934830526839rem; --distance:8.355413463695925rem; --position:-0.7079493476660588%; --time:3.699366397015652s; --delay:-3.8856454204262s;"></div>
+                <div class="bubble" style="--size:2.6865692197522604rem; --distance:7.934508147434893rem; --position:-3.877500462301886%; --time:3.2950103696116266s; --delay:-2.9209839876156662s;"></div>
+                <div class="bubble" style="--size:3.7267311786017823rem; --distance:7.883300013665567rem; --position:85.90133963553887%; --time:3.8233020924199432s; --delay:-3.263021852144525s;"></div>
+                <div class="bubble" style="--size:5.781543602815376rem; --distance:8.376376531500462rem; --position:72.96669554515807%; --time:3.355857492340955s; --delay:-2.3132684686233422s;"></div>
+                <div class="bubble" style="--size:2.7973569455949923rem; --distance:9.012546948763635rem; --position:37.57115748397664%; --time:2.7310068591595864s; --delay:-3.737178296641933s;"></div>
+                <div class="bubble" style="--size:3.361724773278304rem; --distance:7.9738392665640605rem; --position:64.56591232828525%; --time:2.4236151962979995s; --delay:-3.6184383267233438s;"></div>
+                <div class="bubble" style="--size:3.1048787825843824rem; --distance:9.039602896360279rem; --position:54.5637519701967%; --time:2.882241778987731s; --delay:-2.3678500255610526s;"></div>
+                <div class="bubble" style="--size:4.403373133682511rem; --distance:6.76010109181733rem; --position:42.2569411348126%; --time:3.4503934131716956s; --delay:-2.1842805778515775s;"></div>
+                <div class="bubble" style="--size:3.91783658518031rem; --distance:7.150835582143626rem; --position:25.16859774028761%; --time:3.1547090079372175s; --delay:-2.8358218064685223s;"></div>
+                <div class="bubble" style="--size:3.1650498875089177rem; --distance:8.972770508712273rem; --position:85.12489629808196%; --time:2.638877926605101s; --delay:-2.226111557834871s;"></div>
+                <div class="bubble" style="--size:5.865119804466322rem; --distance:9.962800544117883rem; --position:0.0045061825798597965%; --time:2.186608763272246s; --delay:-3.605471567975801s;"></div>
+                <div class="bubble" style="--size:2.164493473055664rem; --distance:9.316257035788727rem; --position:-4.731971567492903%; --time:3.6720190072917913s; --delay:-2.7473346080654126s;"></div>
+                <div class="bubble" style="--size:2.503498870101069rem; --distance:6.329718788240635rem; --position:79.04386115148687%; --time:2.3922674401853143s; --delay:-2.199121930515377s;"></div>
+                <div class="bubble" style="--size:5.4982299593678rem; --distance:6.547813366291408rem; --position:81.5801063800096%; --time:2.1552531660368763s; --delay:-3.713504077830191s;"></div>
+                <div class="bubble" style="--size:2.448567785777361rem; --distance:7.907649453304326rem; --position:-2.357224939693905%; --time:3.5088633867643564s; --delay:-2.583880794904242s;"></div>
+                <div class="bubble" style="--size:5.8383424249029545rem; --distance:7.785682583833414rem; --position:83.18098451589542%; --time:3.127012535178705s; --delay:-2.7213933478920227s;"></div>
+                <div class="bubble" style="--size:3.4451277561889633rem; --distance:8.223106649566212rem; --position:63.88580431510694%; --time:2.70490776391654s; --delay:-3.5494638050374094s;"></div>
+                <div class="bubble" style="--size:5.930805399989377rem; --distance:9.103516093270503rem; --position:22.119932286707012%; --time:2.193506689251974s; --delay:-2.384113333144114s;"></div>
+                <div class="bubble" style="--size:3.450239399905512rem; --distance:8.957801253932857rem; --position:61.59107840324245%; --time:2.7719872644127594s; --delay:-3.722944770592935s;"></div>
+                <div class="bubble" style="--size:2.4186437811176393rem; --distance:8.223014012035625rem; --position:15.13881803244449%; --time:2.8076233342141017s; --delay:-3.31615254449548s;"></div>
+                <div class="bubble" style="--size:4.4522520674384305rem; --distance:9.138921730933845rem; --position:77.42665783188141%; --time:2.6420474398146014s; --delay:-3.365328612947251s;"></div>
+                <div class="bubble" style="--size:5.701125651967535rem; --distance:8.696102586698323rem; --position:15.597704411913071%; --time:3.2611234505291544s; --delay:-2.2666043458869276s;"></div>
+                <div class="bubble" style="--size:5.941919086532331rem; --distance:6.480828644111033rem; --position:87.20565824388852%; --time:2.872329153104356s; --delay:-3.5805507781376384s;"></div>
+                <div class="bubble" style="--size:2.586471796847616rem; --distance:9.880274339707288rem; --position:45.16226086418621%; --time:3.64861163490553s; --delay:-3.662523138764909s;"></div>
+                <div class="bubble" style="--size:4.160391594369758rem; --distance:8.267848878473757rem; --position:89.40205727304034%; --time:2.492664208260344s; --delay:-2.993667032149688s;"></div>
+                <div class="bubble" style="--size:3.497756540578731rem; --distance:9.25341889415968rem; --position:44.81533387924419%; --time:2.2801102400331517s; --delay:-3.163474981531655s;"></div>
+                <div class="bubble" style="--size:5.572791255303843rem; --distance:9.693907551793927rem; --position:7.96102998795085%; --time:2.850782780584311s; --delay:-3.086059564536407s;"></div>
+                <div class="bubble" style="--size:3.955288022555721rem; --distance:8.286697632631705rem; --position:57.70620160000948%; --time:2.9644447497725386s; --delay:-2.9576205164735323s;"></div>
+                <div class="bubble" style="--size:5.32736198059037rem; --distance:6.016424028999177rem; --position:98.33112551228217%; --time:3.6857109430229946s; --delay:-3.14723675456154s;"></div>
+                <div class="bubble" style="--size:5.567812266373402rem; --distance:8.961889168247659rem; --position:88.44094816368536%; --time:3.8578165855328987s; --delay:-2.3972213327750818s;"></div>
+                <div class="bubble" style="--size:2.524589058990255rem; --distance:9.84716744253136rem; --position:52.17313355482277%; --time:2.620609578011918s; --delay:-3.6470990410701596s;"></div>
+                <div class="bubble" style="--size:5.35402741105765rem; --distance:6.4914618041973595rem; --position:24.4406820218413%; --time:3.976204550840713s; --delay:-3.7154563403608245s;"></div>
+                <div class="bubble" style="--size:3.555235514248082rem; --distance:6.526729869956552rem; --position:49.511175890024994%; --time:3.018785682559771s; --delay:-2.2903618454646453s;"></div>
+                <div class="bubble" style="--size:2.9951537120926037rem; --distance:6.5323382477205225rem; --position:7.418162888308439%; --time:2.0951548096246513s; --delay:-3.751976714033871s;"></div>
+                <div class="bubble" style="--size:3.244081325725255rem; --distance:8.93215135572096rem; --position:13.244997918606572%; --time:2.558254680287019s; --delay:-2.303252052348996s;"></div>
+                <div class="bubble" style="--size:4.869908731493987rem; --distance:6.924013455159268rem; --position:12.427974995350699%; --time:2.3907814339377964s; --delay:-2.735722367325462s;"></div>
+                <div class="bubble" style="--size:5.589808720326739rem; --distance:8.121060006643463rem; --position:86.59799441184023%; --time:2.128617110566536s; --delay:-3.3806224967218506s;"></div>
+                <div class="bubble" style="--size:3.8349994826006517rem; --distance:6.5527491097510175rem; --position:2.395538159917619%; --time:2.5697573374338076s; --delay:-3.625428089718377s;"></div>
+                <div class="bubble" style="--size:5.449806817182638rem; --distance:7.972932552010353rem; --position:88.45647373905402%; --time:3.0038946040617978s; --delay:-3.036577669607306s;"></div>
+                <div class="bubble" style="--size:3.071844220685967rem; --distance:8.938009493516454rem; --position:96.40931950056213%; --time:2.5923764965095137s; --delay:-2.81187645923227s;"></div>
+                <div class="bubble" style="--size:2.9791097686891055rem; --distance:9.427048448638827rem; --position:52.84197720296485%; --time:3.9452978719140543s; --delay:-3.375480367268055s;"></div>
+                <div class="bubble" style="--size:2.7253658298611834rem; --distance:6.897998167400917rem; --position:59.175083159439694%; --time:3.5289372052901147s; --delay:-2.342725155119046s;"></div>
+                <div class="bubble" style="--size:3.945829668797648rem; --distance:8.748508916597801rem; --position:70.26514570700222%; --time:3.4743379917674733s; --delay:-2.67207247540115s;"></div>
+                <div class="bubble" style="--size:4.238088320109467rem; --distance:7.331441663297195rem; --position:38.230194078006214%; --time:2.2825741968368973s; --delay:-3.8949944248876474s;"></div>
+                <div class="bubble" style="--size:3.3974488075759615rem; --distance:8.617000126486218rem; --position:54.46596026956574%; --time:3.0380324514352854s; --delay:-3.2166415648550513s;"></div>
+                <div class="bubble" style="--size:4.663370469704674rem; --distance:9.602688713669838rem; --position:13.641123113749583%; --time:2.9168900779212787s; --delay:-3.362769112288182s;"></div>
+                <div class="bubble" style="--size:4.382056838369966rem; --distance:7.14788937460772rem; --position:42.434714106555816%; --time:2.262985235757385s; --delay:-2.8672228164948996s;"></div>
+                <div class="bubble" style="--size:3.1177792719189785rem; --distance:6.555432817001703rem; --position:27.903760366503136%; --time:3.4315213785862455s; --delay:-3.8918066113606646s;"></div>
+                <div class="bubble" style="--size:2.747137745461025rem; --distance:7.480015045609354rem; --position:69.5456915577589%; --time:2.398811996712012s; --delay:-3.992650122846808s;"></div>
+                <div class="bubble" style="--size:5.1144557209933454rem; --distance:8.484680010653094rem; --position:100.36433273554724%; --time:2.5896790337591176s; --delay:-2.3563469832884754s;"></div>
+                <div class="bubble" style="--size:4.171746216914862rem; --distance:9.896345314080913rem; --position:99.07955595090718%; --time:2.5609753845892933s; --delay:-2.3145882167829126s;"></div>
+                <div class="bubble" style="--size:3.4095336007857213rem; --distance:7.601328410307881rem; --position:26.46839981925511%; --time:2.3129847117800675s; --delay:-2.9408521888482007s;"></div>
+                <div class="bubble" style="--size:2.521848889125378rem; --distance:6.980638697356101rem; --position:41.416248045838536%; --time:3.4355185332741005s; --delay:-3.1661147401431644s;"></div>
+                <div class="bubble" style="--size:3.784770162350946rem; --distance:9.067565983466016rem; --position:27.256984581217196%; --time:3.449045231780593s; --delay:-2.1831512200634684s;"></div>
+                <div class="bubble" style="--size:3.3602294791964855rem; --distance:9.163808126056807rem; --position:12.08044174050102%; --time:2.7964736300393387s; --delay:-3.0227913268322038s;"></div>
+                <div class="bubble" style="--size:3.336913441478951rem; --distance:8.331677083620654rem; --position:12.770333351805412%; --time:3.2597208296641798s; --delay:-2.0460995561567032s;"></div>
+                <div class="bubble" style="--size:2.7526977452543626rem; --distance:7.424672810181846rem; --position:25.42664524107738%; --time:3.3690964457234855s; --delay:-3.9764692979431366s;"></div>
+                <div class="bubble" style="--size:3.71076643233678rem; --distance:9.90924235375537rem; --position:41.95381014813465%; --time:2.911174271103608s; --delay:-3.36494009878228s;"></div>
+                <div class="bubble" style="--size:5.7656780091907605rem; --distance:6.254699856011321rem; --position:43.60596680814553%; --time:3.834530721892777s; --delay:-3.7844649550042826s;"></div>
+                <div class="bubble" style="--size:5.531407797201078rem; --distance:6.084488874327069rem; --position:23.00117509792986%; --time:2.9896395755293246s; --delay:-3.505421399341445s;"></div>
+                <div class="bubble" style="--size:2.341872535618844rem; --distance:9.688750850535497rem; --position:75.62935215174045%; --time:2.638308292275767s; --delay:-3.8767614608236105s;"></div>
+                <div class="bubble" style="--size:3.0152210620335325rem; --distance:9.617006465309064rem; --position:74.33215777655826%; --time:3.1226756129703253s; --delay:-3.521250953589513s;"></div>
+                <div class="bubble" style="--size:5.5896595282779815rem; --distance:6.179199301613646rem; --position:52.160126722215374%; --time:3.9108353805820766s; --delay:-2.239897831475759s;"></div>
+                <div class="bubble" style="--size:5.591787844875146rem; --distance:9.071782708075522rem; --position:41.98655756798221%; --time:2.595211958447547s; --delay:-2.0571804401988016s;"></div>
+                <div class="bubble" style="--size:3.199487700549815rem; --distance:8.38085738530237rem; --position:13.67616891483155%; --time:2.322082186178604s; --delay:-3.020811916237575s;"></div>
+                <div class="bubble" style="--size:4.295764553342953rem; --distance:7.425103328080407rem; --position:85.06489857269574%; --time:2.6319882290358816s; --delay:-3.543421332671397s;"></div>
+                <div class="bubble" style="--size:5.146123104150069rem; --distance:8.899278501696273rem; --position:22.480282068870093%; --time:2.157687085065218s; --delay:-2.6059661864239643s;"></div>
+                <div class="bubble" style="--size:2.5827434006268346rem; --distance:7.855842646429278rem; --position:84.86688925534317%; --time:3.00997880720207s; --delay:-2.7009275051101054s;"></div>
+                <div class="bubble" style="--size:5.42278862744269rem; --distance:9.09116853666603rem; --position:91.71056865548307%; --time:2.741029853109749s; --delay:-2.4342769462320164s;"></div>
+                <div class="bubble" style="--size:2.2026068675024106rem; --distance:6.321005433642489rem; --position:83.85462072576964%; --time:2.5599597971232106s; --delay:-2.8759696422883643s;"></div>
+                <div class="bubble" style="--size:3.8222390472405303rem; --distance:8.168050554122606rem; --position:103.71131795021229%; --time:2.731251040797198s; --delay:-3.380440727034513s;"></div>
+                <div class="bubble" style="--size:5.8350415683439385rem; --distance:9.730037531785218rem; --position:11.764699950987723%; --time:2.2796194352777115s; --delay:-3.676323132936096s;"></div>
+                <div class="bubble" style="--size:4.78765119463635rem; --distance:8.12645431781677rem; --position:-2.6777592764307157%; --time:2.6991440840559546s; --delay:-3.102855161940005s;"></div>
+                <div class="bubble" style="--size:3.472448129986647rem; --distance:9.102669279124001rem; --position:21.586542259277245%; --time:2.817037004836321s; --delay:-2.332631468630725s;"></div>
+                <div class="bubble" style="--size:3.0431361212804067rem; --distance:7.358182070291739rem; --position:62.17325790439513%; --time:2.5137275564242287s; --delay:-2.322819937744714s;"></div>
+                <div class="bubble" style="--size:2.6738554308229885rem; --distance:6.537670195302158rem; --position:25.369631568138992%; --time:2.1217022941832293s; --delay:-3.7378777482545043s;"></div>
+                <div class="bubble" style="--size:2.450357819354128rem; --distance:7.945032952087007rem; --position:6.253955683566785%; --time:2.54483703147899s; --delay:-3.209575360053988s;"></div>
+                <div class="bubble" style="--size:4.81879349618312rem; --distance:8.862077045429576rem; --position:-1.857398538086974%; --time:3.8993795545631755s; --delay:-2.102472299081077s;"></div>
+                <div class="bubble" style="--size:4.420845696559261rem; --distance:9.420562631080557rem; --position:44.29247000010662%; --time:2.351645593877436s; --delay:-3.3109438349205447s;"></div>
+                <div class="bubble" style="--size:2.2109348917149623rem; --distance:6.185952963918876rem; --position:69.90585118865748%; --time:2.9531149531643073s; --delay:-2.652442101561777s;"></div>
+                <div class="bubble" style="--size:4.047325449965876rem; --distance:8.61346600908447rem; --position:27.741280184627833%; --time:3.786399856068265s; --delay:-3.8676620196408775s;"></div>
+                <div class="bubble" style="--size:4.989489892414101rem; --distance:8.057929433718193rem; --position:18.44142847976868%; --time:3.4916699042940875s; --delay:-2.584642591621184s;"></div>
+                <div class="bubble" style="--size:5.323236049305929rem; --distance:6.75427755384719rem; --position:59.26755532713972%; --time:2.1773711921530046s; --delay:-3.4216747794865863s;"></div>
+                <div class="bubble" style="--size:5.03550738289028rem; --distance:9.66484146786594rem; --position:8.635172107816771%; --time:3.3898208782285515s; --delay:-3.885822623257885s;"></div>
+                <div class="bubble" style="--size:3.0036883367814164rem; --distance:9.275731744208393rem; --position:65.38359661423782%; --time:3.2300066790492163s; --delay:-3.2489985538511448s;"></div>
+                <div class="bubble" style="--size:3.7018558648760855rem; --distance:6.021739457386956rem; --position:86.52487627317%; --time:3.5508756813633893s; --delay:-2.609136669416246s;"></div>
+                <div class="bubble" style="--size:4.793890106873427rem; --distance:7.91918302680058rem; --position:75.94233631573277%; --time:3.438375590895908s; --delay:-3.483915978765245s;"></div>
+                <div class="bubble" style="--size:4.334624559663849rem; --distance:6.624944715567953rem; --position:70.91158520769761%; --time:2.204013240789074s; --delay:-2.4372548137326855s;"></div>
+                <div class="bubble" style="--size:5.497071240526373rem; --distance:9.277984727035815rem; --position:32.583433201927434%; --time:2.3585230515793802s; --delay:-3.5313062058502545s;"></div>
+                <div class="bubble" style="--size:3.5027387324474253rem; --distance:7.859758770406749rem; --position:65.61961139534729%; --time:2.7512058498987546s; --delay:-2.4991083104279115s;"></div>
+                <div class="bubble" style="--size:5.847421962718788rem; --distance:7.3817193837648265rem; --position:16.11327153554376%; --time:2.298397853494438s; --delay:-2.505525909037154s;"></div>
+                <div class="bubble" style="--size:3.436085408244142rem; --distance:9.08607436262755rem; --position:64.6776051392634%; --time:3.402872760067085s; --delay:-2.094364432319155s;"></div>
+                <div class="bubble" style="--size:3.9392927952028405rem; --distance:9.08350596822438rem; --position:32.20686114404216%; --time:3.7122977458779163s; --delay:-3.8085590403248295s;"></div>
+                <div class="bubble" style="--size:2.48565012826805rem; --distance:7.524377632690731rem; --position:78.58774790934524%; --time:3.686907638721764s; --delay:-2.221888550565538s;"></div>
+                <div class="bubble" style="--size:5.610876643234899rem; --distance:6.832559015999161rem; --position:38.43883499552382%; --time:3.4248947856919902s; --delay:-2.899374157554951s;"></div>
+                <div class="bubble" style="--size:4.868601059388561rem; --distance:7.761268474521007rem; --position:82.40601483255283%; --time:2.924248410039314s; --delay:-2.553714033010365s;"></div>
+                <div class="bubble" style="--size:2.5355854386783685rem; --distance:7.799378438955717rem; --position:72.80537941203004%; --time:2.539022567466671s; --delay:-3.9722633488670196s;"></div>
+                <div class="bubble" style="--size:2.2909735032772627rem; --distance:8.787815743180843rem; --position:44.71257815127707%; --time:2.374373180971335s; --delay:-3.394308311989157s;"></div>
+                <div class="bubble" style="--size:4.068178224948577rem; --distance:9.80478037454416rem; --position:60.00236231221011%; --time:2.231109970553191s; --delay:-3.194207446684977s;"></div>
+                <div class="bubble" style="--size:4.872230147215879rem; --distance:6.362597093433851rem; --position:58.10673494158351%; --time:2.3451937826107434s; --delay:-2.154203814738979s;"></div>
+                <div class="bubble" style="--size:2.651620906134096rem; --distance:9.574016032190563rem; --position:5.808261772857541%; --time:2.4973534962147332s; --delay:-3.198198258704083s;"></div>
+                <div class="bubble" style="--size:5.643305927256484rem; --distance:9.115550859019677rem; --position:59.34997446384125%; --time:2.349111197545903s; --delay:-2.4991604150601208s;"></div>
+                <div class="bubble" style="--size:3.3901154021477504rem; --distance:9.049264260020585rem; --position:103.14461725497908%; --time:3.7292659038838027s; --delay:-3.54737088167942s;"></div>
+                <div class="bubble" style="--size:2.0052533654867846rem; --distance:6.00947131005078rem; --position:95.18136149783774%; --time:3.878949665682946s; --delay:-3.932895761443299s;"></div>
+                <div class="bubble" style="--size:2.597657129229118rem; --distance:9.413533231928337rem; --position:80.91008373677451%; --time:2.834464899581895s; --delay:-3.974425868690541s;"></div>
+                <div class="bubble" style="--size:4.737721549818992rem; --distance:9.755933590103908rem; --position:56.2441694951638%; --time:3.8343233057611683s; --delay:-2.5820723015434734s;"></div>
+                <div class="bubble" style="--size:5.541796332042217rem; --distance:6.971459191304514rem; --position:87.49494255211953%; --time:3.7987597131399813s; --delay:-3.1951634078433506s;"></div>
+                <div class="bubble" style="--size:4.222889871374375rem; --distance:7.667875044096581rem; --position:99.71454858959976%; --time:2.771557565601506s; --delay:-2.391004714639539s;"></div>
+                <div class="bubble" style="--size:4.572496392633047rem; --distance:8.379734067031158rem; --position:4.341535300952252%; --time:3.568174188293543s; --delay:-3.794199281067763s;"></div>
+                <div class="bubble" style="--size:3.7711087992098253rem; --distance:8.310116781221627rem; --position:15.850659638215973%; --time:3.9198227737873115s; --delay:-2.5913573638946827s;"></div>
+                <div class="bubble" style="--size:5.534622841007265rem; --distance:8.692397605327224rem; --position:72.15159167112314%; --time:3.90468309453385s; --delay:-2.123026207083379s;"></div>
+                <div class="bubble" style="--size:3.7640984292772366rem; --distance:6.304100714972802rem; --position:71.61092641038978%; --time:3.045881305712662s; --delay:-2.037347364544109s;"></div>
+                <div class="bubble" style="--size:4.50300795056469rem; --distance:8.664509800157315rem; --position:47.77864674216329%; --time:3.7569280124178968s; --delay:-3.875417569864701s;"></div>
+                <div class="bubble" style="--size:4.569288113165998rem; --distance:6.600769255439083rem; --position:99.32942372289861%; --time:3.1671529429576832s; --delay:-3.551008374603339s;"></div>
+                <div class="bubble" style="--size:3.841421675371927rem; --distance:8.0519991816038rem; --position:42.587845969508834%; --time:2.6139909359452953s; --delay:-2.750970185004504s;"></div>
+                <div class="bubble" style="--size:4.324988235283169rem; --distance:6.375988924432715rem; --position:75.61932012390565%; --time:2.608099444164843s; --delay:-3.3206051283062865s;"></div>
+            </div>
+            <div class="content">
+                <div>
+
+                    <div class=" text-center">
+                        <p class="leading-normal my-5">karachi
+                            <br>pakistan
+                        </p>
+                        <span class="inline-flex">
+                     <a class="text-gray-500"href="https://www.facebook.com">
+                    <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                  </svg>
+                </a>
+                <a class="ml-4 text-gray-500" href="https://www.twitter.com">
+                    <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                      <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                    </svg>
+                  </a>
+              <a class="ml-4 text-gray-500"href="https://www.instagram.com">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                 <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                 <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+             </svg>
+             </a>
+                <a class="ml-4 text-gray-500"href="https://www..com">
+                <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                 <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
+             </svg>
+             </a>
+                </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <svg style="position: fixed; top: 100vh">
+        <defs>
+     <filter id="blob">
+       <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"></feGaussianBlur>
+       <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="blob"></feColorMatrix>
+       
+     </filter>
+   </defs>
+ </svg>
+
+</body>
+
+</html>
